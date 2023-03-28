@@ -1,42 +1,19 @@
-/*
- *问题描述
- * 一根高筋拉面，中间切一刀，可以得到2根面条
- * 如果对折1次，中间切一刀可以得到3根面条
- * 如果连续对折2次，中间切一刀可以得到5根面条
- * 那么连续对折10次，中间切一刀可以得到多少面条？
- *
- *
- * 问题分析
-1. 不对折（对折零次），从中间切一刀，得到 2 根面条， 2 = 2
-2、对折一次，从中间切一刀，得到 3 根面条， 3 = 2 + 2^0
-3、对折两次，从中间切一刀，得到 5 根面条， 5 = 2 + 2^0 + 2^1
-4、对折三次，从中间切一刀，得到 9 根面条， 9 = 2 + 2^0 + 2^1 + 2^2
-…
-11、对折十次，从中间切一刀，得到 2 + 2^0 + 2^1 + 2^2 + ...... + 2^9 根面条
- *
- * */
+/*大衍数列
+中国古代文献中，曾记载过“大衍数列”, 主要用于解释中国传统文化中的太极衍生原理。
+它的前几项是：0、2、4、8、12、18、24、32、40、50 …
+其规律是：对偶数项，是序号平方再除2，奇数项，是序号平方减1再除2。
+*/
+#include<stdio.h>
 
-#include <stdio.h>
-
-int cut_noodles(int times){
-    int result = 1,t= 1;
-    for(int i = 0; i<times; i++){
-        result += t;
-        t = t * 2;
-        return result;
-    }
-
-}
+int i;
 
 int main(){
-    int result;
-    int times;
-    printf("Enter the number of times to cut the noodles:");
-
-    scanf("%d",&times);
-    result = cut_noodles(times);
-    printf("Output Results%d\n",result);
-    return 0;
-
+    printf("Enter the number of Dayan arrays:\n");
+    scanf("%d",&i);
+    if (i&1){
+        printf("Dayan arrays:%d",(i*i-1)/2);
+    }
+    else{
+        printf("Dayan arrays:%d",i*i/2);
+    }
 }
-
